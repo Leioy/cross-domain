@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text"  placeholder="http://b.jrg.com:8080/index2.html">
+
+	<script type="text/javascript">
+		document.querySelector('input').addEventListener('input',function(){
+			window.parent.postMessage(this.value,'*')
+		})
+
+		window.addEventListener('message',function(e){
+			document.querySelector('input').value = e.data
+			console.log(e.data)
+		})
+	</script>
+</body>
+</html>

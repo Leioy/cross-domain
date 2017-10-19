@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style type="text/css">
+	.ct {
+		width: 800px;
+		margin: 0 auto;
+	}
+	.main {
+		float: left;
+	}
+	.main,iframe {
+		width: 350px;
+		height: 200px;
+		border: 1px solid pink;
+		margin: 100px 0;
+	}
+</style>
+</head>
+<body>
+	<div class="ct">
+		<h1>使用降域实现跨域</h1>
+		<div class="main">
+			<input type="text" placeholder="http://a.jrg.com:8080/a.html">
+		</div>
+		<iframe src="http://b.jrg.com:8080/b.html"></iframe>
+	</div>
+
+<script type="text/javascript">
+	document.querySelector('.main input').addEventListener('input',function(){
+		console.log(this)
+		window.frames[0].document.querySelector('input').value = this.value
+	})
+	document.domain = 'jrg.com'
+</script>
+</body>
+</html>
